@@ -1,0 +1,72 @@
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+
+        <h1 class="header center black-text">Saved Articles</h1>
+
+        {{#each articles}}
+
+        <div class="row">
+
+            <div class="card black darken-1">
+                <div class="card-content white-text">
+                    <a class="white-text text-lighten-5" href="{{link}}" target="_blank"><span class="card-title">{{title}}</span></a>
+                    <p>{{summary}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="#modalnotes{{@index}}" class="modal-trigger display_notes blue-text" data-id="{{_id}}">Article Notes</a>
+                    <a href="#modalremove{{@index}}" class="modal-trigger remove_article blue-text" data-id="{{_id}}">Remove Article</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="modalnotes{{@index}}" class="modal">
+            <div class="modal-content">
+                <h4>Notes</h4>
+
+                {{#each notes}}
+
+                <div class="card note_container">
+                    <div class="card-content row">
+                        <p class="col s11">{{body}}</p>
+                        <a href="#" class="delete_note" data-id={{_id}}><i class="col s1 small material-icons red-text tooltipped" data-position="bottom" data-tooltip="delete">delete</i></a>
+                    </div>
+                </div>
+
+                {{/each}}
+
+                <form>
+                    <div class="row">
+                        <div class="input-field col s11">
+                            <input id="addnote{{@index}}" type="text">
+                            <label for="addnote{{@index}}">Add a Note</label>
+                        </div>
+                        <div class="input-field col s1">
+                            <button class="btn blue add_note" data-id="{{@index}}" data-article="{{_id}}">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="/saved" class="modal-close black btn">Done</a>
+            </div>
+        </div>
+
+        <div id="modalremove{{@index}}" class="modal">
+            <div class="modal-content">
+                <p> You've removed this article from your saved articles.</p>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="/saved" class="modal-close black btn">Okay</a>
+            </div>
+        </div>
+
+        {{/each}}
+
+
+    </div>
+</div>
+
+<script src="/assets/javascript/saved.js"></script>

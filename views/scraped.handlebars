@@ -1,0 +1,38 @@
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+
+        <h1 class="header center black-text">Scraped Articles</h1>
+
+        {{#each articles}}
+
+        <div class="row">
+
+            <div class="card black darken-1">
+                <div class="card-content white-text">
+                    <a class="white-text text-lighten-5" href="{{link}}" target="_blank"><span class="card-title">{{title}}</span></a>
+                    <p>{{summary}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="#modal{{@index}}" class="modal-trigger save_article blue-text" data-id="{{_id}}">Save Article</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="modal{{@index}}" class="modal">
+            <div class="modal-content">
+                <p>This article will be added to your saved articles.</p>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="/scraped" class="modal-close black btn">Okay</a>
+            </div>
+        </div>
+
+        {{/each}}
+
+
+    </div>
+</div>
+
+<script src="/assets/javascript/scraped.js"></script>
