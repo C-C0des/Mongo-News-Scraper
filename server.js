@@ -5,8 +5,6 @@ const mongoose = require("mongoose");
 const html_routes = require("./routes/html_routes.js");
 const api_routes = require("./routes/api_routes.js");
 
-// Require all models
-//const db = require("./models");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -14,8 +12,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//Set Handlebars.
-
+//Set Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars")
 
